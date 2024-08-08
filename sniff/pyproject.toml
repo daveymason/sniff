@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sniff_admanvoids"  # If you chance the name of the package you will need to change the name of the directory
+version = "0.1.2"
+authors = [
+  { name="Davey Mason", email="daveymason@outlook.com" },
+]
+description = "A package for sniffing website information"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests",
+    "beautifulsoup4",
+    "click",
+    "python-whois",
+    "cryptography"
+]
+
+[project.scripts]
+sniff = "sniff.sniff:main"
+
+[project.urls]
+Homepage = "https://github.com/daveymason/sniff"
+Issues = "https://github.com/daveymason/sniff/issues"
