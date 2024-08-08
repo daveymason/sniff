@@ -75,14 +75,15 @@ def fetch_website_info(url):
             "Headers": headers,
             "Word Count": word_count,
             "Registrar": registrar,
-            "Creation Date": creation_date.isoformat() if isinstance(creation_date, datetime) else creation_date,
-            "Expiration Date": expiration_date.isoformat() if isinstance(expiration_date, datetime) else expiration_date,
+            "Creation Date": creation_date.isoformat() if isinstance(creation_date, datetime) else str(creation_date),
+            "Expiration Date": expiration_date.isoformat() if isinstance(expiration_date, datetime) else str(expiration_date),
             "SSL Issuer": ssl_issuer,
             "SSL Subject": ssl_subject,
-            "SSL Expiration Date": ssl_expiration_date.isoformat() if isinstance(ssl_expiration_date, datetime) else ssl_expiration_date,
+            "SSL Expiration Date": ssl_expiration_date.isoformat() if isinstance(ssl_expiration_date, datetime) else str(ssl_expiration_date),
             "Security Headers": security_headers,
             "HTTP Headers": dict(http_headers),
         }
+
 
         return result
     
