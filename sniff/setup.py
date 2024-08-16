@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="sniff_admanvoids",  # Update the project name here
-    version="0.1.2",
+    version="0.1.4",
     author="Davey Mason",
     author_email="daveymason@outlook.com",
     description="A package for sniffing website information",

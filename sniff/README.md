@@ -28,6 +28,9 @@ The script supports the following options:
 ```sh
 sniff example.com --output json
 ```
+- `--assess-risks`: Perform a risk assessment based on the website's security headers
+
+```sh
 
 
 ## Notes

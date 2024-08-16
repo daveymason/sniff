@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sniff_admanvoids"  # If you chance the name of the package you will need to change the name of the directory
-version = "0.1.2"
+version = "0.1.4"
 authors = [
   { name="Davey Mason", email="daveymason@outlook.com" },
 ]
@@ -21,7 +21,7 @@ dependencies = [
     "beautifulsoup4",
     "click",
     "python-whois",
-    "cryptography"
+    "cryptography",
 ]
 
 [project.scripts]
