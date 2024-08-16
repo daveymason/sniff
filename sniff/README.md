@@ -1,4 +1,3 @@
-
 # Sniff - The Website Sniffer
 
 Sniff is a command-line tool for sniffing website information including SSL details, WHOIS information, security headers, and more.
@@ -31,7 +30,8 @@ sniff example.com --output json
 - `--assess-risks`: Perform a risk assessment based on the website's security headers
 
 ```sh
-
+sniff example.com --assess-risks
+```
 
 ## Notes
 
@@ -41,3 +41,4 @@ sniff example.com --output json
 ## License
 
 This project is licensed under the MIT License.
+
