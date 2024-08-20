@@ -128,6 +128,7 @@ def extract_external_links(soup, domain):
             external_links.append(href)
     return external_links
 
+# This needs to be expanded little by little
 def check_iso_27001_compliance(security_headers, ssl_info):
     compliance_issues = []
 
@@ -243,6 +244,12 @@ def format_output(result):
     blue = "\033[94m"
     yellow = "\033[93m"
     cyan = "\033[96m"
+
+    print(f"{bold}Website URL:{reset} {result['Website URL']}")
+    print(f"{bold}IP Address:{reset} {result['IP Address']}")
+    print(f"{bold}Response Time:{reset} {result['Response Time']}")
+    print(f"{bold}Title:{reset} {result['Title']}")
+    print(f"{bold}Description:{reset} {result['Description']}")
 
     print(f"{bold}{green}SSL Information:{reset}")
     print(f"  {bold}SSL Issuer:{reset} {result['SSL Issuer']}")

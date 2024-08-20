@@ -42,3 +42,11 @@ sniff example.com --assess-risks
 
 This project is licensed under the MIT License.
 
+## To-Do
+
+- Implement a progress bar for long-running tasks.
+- Add support for analyzing subdomains utilizing DNS records & parralel processing.
+- Enhance the risk assessment algorithm including outputs for specific cases. 
+- Social engineering targets, such as email addresses, phone numbers, etc.
+
+

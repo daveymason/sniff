@@ -8,8 +8,8 @@ version = "0.1.4"
 authors = [
   { name="Davey Mason", email="daveymason@outlook.com" },
 ]
-description = "A package for sniffing website information"
-readme = "README.md"
+description = "A package for sniffing website information. Ideal for reconnaissance, bug bounty hunting, and penetration testing."
+readme = "PYPI_README.md"
 requires-python = ">=3.6"
 classifiers = [
     "Programming Language :: Python :: 3",
