@@ -17,7 +17,7 @@ def fetch_website_info(url):
 
     try:
         domain = url.split("//")[-1].split("/")[0]
-        ip_address = requests.get(f'https://api.ipify.org/?format=json').json().get('ip', 'Unknown') # Alternative IP fetch
+        ip_address = socket.gethostbyname(domain)
 
         response = requests.get(url, timeout=10)
         response_time = response.elapsed.total_seconds()
@@ -29,13 +29,31 @@ def fetch_website_info(url):
         description_tag = soup.find('meta', attrs={'name': 'description'})
         description = description_tag['content'] if description_tag else 'No description found'
                 
-        whois_info = whois.whois(domain)
-        registrar = whois_info.registrar
-        creation_date = whois_info.creation_date
-        expiration_date = whois_info.expiration_date
+        try:
+            whois_info = whois.whois(domain)
+            registrar = whois_info.registrar
+            creation_date = whois_info.creation_date
+            expiration_date = whois_info.expiration_date
+            
+            # Handle potential lists in the creation_date and expiration_date
+            if isinstance(creation_date, list):
+                creation_date = creation_date[0]
+            if isinstance(expiration_date, list):
+                expiration_date = expiration_date[0]
+                
+        except whois.parser.PywhoisError:
+            registrar = "WHOIS data not found"
+            creation_date = None
+            expiration_date = None
+        except Exception as e:
+            print(f"Error fetching WHOIS info: {e}")
+            registrar = "WHOIS error"
+            creation_date = None
+            expiration_date = None
 
-        ssl_issuer, ssl_subject, ssl_expiration_date = fetch_ssl_info(domain)
-        
+        # Fetch SSL info
+        ssl_issuer, ssl_subject, ssl_expiration_date, ssl_protocol_version = fetch_ssl_info(domain)
+
         http_headers = response.headers
         security_headers = detect_security_headers(http_headers)
 
@@ -61,6 +79,7 @@ def fetch_website_info(url):
             "Expiration Date": expiration_date.isoformat() if isinstance(expiration_date, datetime) else str(expiration_date),
             "SSL Issuer": ssl_issuer,
             "SSL Subject": ssl_subject,
+            "SSL Protocol Version": ssl_protocol_version,
             "SSL Expiration Date": ssl_expiration_date.isoformat() if isinstance(ssl_expiration_date, datetime) else str(ssl_expiration_date),
             "Security Headers": security_headers,
             "HTTP Headers": dict(http_headers),
